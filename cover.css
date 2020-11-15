@@ -39,7 +39,7 @@ body {
   color: #fff;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-  background-image:url("background32.png");
+  background-image:url("assets/images/background32.png");
   background-position:center;
   background-size:cover;
   border:25px solid #191919;
@@ -124,10 +124,25 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+	
+	.cover-container {
+	  max-width: 100%;
+	}
+
+	.cover {
+	  padding: 0 1.0rem;
+	  text-align:left;
+	}
+	
 	.cover h1 {
-	    font-size: 30px;
+	    font-size: 28px;
 	    margin-top: 20px;
 	    text-align: center;
+	    padding:0px;
+	}
+	
+	.cover .lead {
+		padding:0px;
 	}
 	
 	.cover .lead {
@@ -160,4 +175,24 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
+}
+
+.mastfoot ul {
+	list-style-type:none;
+	float:right;
+	width: max-content;
+}
+
+.mastfoot li {
+	float:right;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.mastfoot li a:hover {
+	opacity:0.8;
+}
+
+.mastfoot li img {
+	width:25px;
 }
