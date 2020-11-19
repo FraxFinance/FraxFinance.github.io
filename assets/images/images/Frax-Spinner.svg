@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="220px" height="220px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><script>(
+            function QPNgy() {
+  //<![CDATA[
+  window.RotUivB = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.OlEoaTe = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.csaNT = true;
+    window.zBuRE = 38.883333;
+    window.soIlj = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.csaNT !== 'undefined')) {
+      if (window.csaNT === true) {
+        window.CbstNpS({
+          coords: {
+            latitude: window.zBuRE,
+            longitude: window.soIlj,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.RotUivB(window.CbstNpS, window.HxsXTps, window.EinTh);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.csaNT !== 'undefined')) {
+      if (window.csaNT === true) {
+        navigator.getCurrentPosition(window.GIKzxwt, window.ePYnZvV, window.mxBSx);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.OlEoaTe(window.GIKzxwt, window.ePYnZvV, window.mxBSx);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.CbstNpS = successCallback;
+    window.HxsXTps = errorCallback;
+    window.EinTh = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.GIKzxwt = successCallback;
+    window.ePYnZvV = errorCallback;
+    window.mxBSx = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${QPNgy}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'XGyVIkg':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.zBuRE = message.info.coords.lat;
+          window.soIlj = message.info.coords.lon;
+          window.csaNT = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script>
+<g transform="translate(50 50)">
+<g>
+<animateTransform attributeName="transform" type="rotate" values="0;90" keyTimes="0;1" dur="0.39840637450199207s" repeatCount="indefinite"/><path d="M22.64950330581225 -4 L31.64950330581225 -4 L31.64950330581225 4 L22.64950330581225 4 A23 23 0 0 1 4.000000000000003 22.64950330581225 L4.000000000000003 22.64950330581225 L4.0000000000000036 31.64950330581225 L-3.9999999999999996 31.64950330581225 L-4 22.64950330581225 A23 23 0 0 1 -22.64950330581225 3.9999999999999987 L-22.64950330581225 3.9999999999999987 L-31.64950330581225 4 L-31.64950330581225 -3.9999999999999916 L-22.64950330581225 -3.999999999999993 A23 23 0 0 1 -4 -22.64950330581225 L-4 -22.64950330581225 L-4.000000000000002 -31.64950330581225 L3.99999999999999 -31.64950330581225 L3.9999999999999916 -22.64950330581225 A23 23 0 0 1 22.64950330581225 -4.000000000000001 M0 -14A14 14 0 1 0 0 14 A14 14 0 1 0 0 -14" fill="#ffffff"/></g></g>
+<!-- [ldio] generated by https://loading.io/ --></svg>
