@@ -47,6 +47,7 @@ body {
 }
 
 .cover-container {
+	z-index: 5;
   max-width: 98%;
 }
 
