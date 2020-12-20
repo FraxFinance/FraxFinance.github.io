@@ -160,9 +160,16 @@ body {
 		padding:0px;
 	}
 	
-	.cover .lead {
-	font-size: 16px;
-	text-align: center;
+	.cover .lead  {
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.cover .lead-text {
+		font-size: 16px;
+		text-align: center;
+		width: 100%;
+		float: left;
 	}
 }
 
