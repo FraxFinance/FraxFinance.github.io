@@ -11,6 +11,37 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-183227393-2');
+
+    // Set the date we're counting down to
+    var countDownDate = new Date(1608508800000).getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
+
+
     </script>
 
     <link key="manifest" rel="manifest" href="/assets/images/manifest.json" />
@@ -95,6 +126,9 @@
         <p class="lead">The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically.</p>
         <p class="lead">
           <a href="https://app.frax.finance" class="btn btn-lg btn-secondary">Trading App</a>
+        </p>
+        <p class="lead">
+          Time until launch: <span class="lead-text" id="demo"></span>
         </p>
       </main>
 
